@@ -49,9 +49,6 @@ function CategoriesList() {
           case 404:
             toast.error("Category not found");
             break;
-          case 400:
-            toast.error("Cannot delete category with existing product");
-            break;
           default:
             toast.error("Error deleting category");
         }
@@ -102,7 +99,7 @@ function CategoriesList() {
                 <td className=" p-2">{category.id}</td>
                 <td className=" p-2">{category.name}</td>
                 <td className=" p-2">{category.description}</td>
-                <td className="flex items-center justify-center  gap-x-2 ">
+                <td className="flex items-center justify-center my-1 gap-x-1 ">
                   <Link
                     to={`/categories/${category.id}/edit`}
                     className="bg-blue-500 text-white  p-2 rounded"

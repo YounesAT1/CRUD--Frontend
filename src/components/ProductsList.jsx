@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
-import { CirclePlus, Pen, Trash } from "lucide-react";
+import { CirclePlus, Pen, ReceiptText, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ProductsList = () => {
   const [products, setproducts] = useState([]);
@@ -24,6 +25,37 @@ const ProductsList = () => {
     };
     fetchProducts();
   }, []);
+
+  const deleteProduct = async (productId) => {
+    try {
+      setIsLoading(true);
+      const response = await axios.delete(
+        `http://127.0.0.1:8000/api/products/${productId}/delete`
+      );
+
+      if (response.status === 200) {
+        const updatedProducts = products.filter(
+          (product) => product.id !== productId
+        );
+        setproducts(updatedProducts);
+        toast.success("Product deleted successfully");
+      }
+    } catch (error) {
+      if (error.response) {
+        switch (error.response.status) {
+          case 404:
+            toast.error("Product not found");
+            break;
+          default:
+            toast.error("Error deleting Product");
+        }
+      } else {
+        toast.error("Error deleting Product");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="max-w-6xl mx-auto p-4">
@@ -52,29 +84,41 @@ const ProductsList = () => {
         <table className="min-w-full bg-white border border-gray-300">
           <thead className="bg-gray-50">
             <tr className="text-left text-slate-700">
-              <th className="border-b p-2">ID</th>
-              <th className="border-b p-2">Name</th>
-              <th className="border-b p-2">Price</th>
-              <th className="border-b p-2">Available Quantity</th>
-              <th className="border-b p-2">Category</th>
-              <th className="border-b p-2">Actions</th>
+              <th className=" p-2">ID</th>
+              <th className=" p-2">Name</th>
+              <th className=" p-2">Price</th>
+              <th className=" p-2">Available Quantity</th>
+              <th className=" p-2">Category</th>
+              <th className=" p-2 text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
               <tr key={product.id}>
-                <td className="border-b p-2">{product.id}</td>
-                <td className="border-b p-2">{product.name}</td>
-                <td className="border-b p-2">{product.price} $</td>
-                <td className="border-b p-2">{product.availableQuantity}</td>
-                <td className="border-b p-2">{product.category.name}</td>
-                <td className="flex items-center my-1 gap-x-2">
-                  <button className="bg-blue-500 text-white p-2 rounded">
+                <td className=" p-2">{product.id}</td>
+                <td className=" p-2">{product.name}</td>
+                <td className=" p-2">{product.price} $</td>
+                <td className=" p-2">{product.availableQuantity}</td>
+                <td className=" p-2">{product.category.name}</td>
+                <td className="flex items-center justify-center my-1 gap-x-1">
+                  <Link
+                    to={`/products/${product.id}/edit`}
+                    className="bg-blue-500 text-white p-2 rounded"
+                  >
                     <Pen size={20} />
-                  </button>
-                  <button className="bg-red-500 text-white p-2 rounded">
+                  </Link>
+                  <button
+                    onClick={() => deleteProduct(product.id)}
+                    className="bg-red-500 text-white p-2 rounded"
+                  >
                     <Trash size={20} />
                   </button>
+                  <Link
+                    to={`/products/${product.id}/show`}
+                    className="bg-green-500 text-white  p-2 rounded"
+                  >
+                    <ReceiptText size={20} />
+                  </Link>
                 </td>
               </tr>
             ))}

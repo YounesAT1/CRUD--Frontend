@@ -5,7 +5,9 @@ import {
   CategoriesList,
   CategoryDetails,
   EditeCategory,
+  EditeProduct,
   Navbar,
+  ProductDetails,
   ProductsList,
 } from "./components";
 
@@ -20,6 +22,8 @@ function App() {
 
             <Route path="/products" element={<ProductsList />} />
             <Route path="/products/add" element={<AddProduct />} />
+            <Route path="/products/:id/edit" element={<EditeProduct />} />
+            <Route path="/products/:id/show" element={<ProductDetails />} />
 
             {/* Categories Routs */}
             <Route path="/categories" element={<CategoriesList />} />

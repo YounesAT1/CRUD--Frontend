@@ -1,12 +1,14 @@
 import Navbar from "./Navbar";
-import ProductsList from "./ProductsList";
-import CategoriesList from "./CategoriesList";
 import Loader from "./Loader";
-import AddProduct from "./AddProduct";
-import AddCategory from "./AddCategory";
 import SubbmitLoader from "./SubbmitLoader";
+import CategoriesList from "./CategoriesList";
+import AddCategory from "./AddCategory";
 import EditeCategory from "./EditeCategory";
 import CategoryDetails from "./CategoryDetails";
+import ProductsList from "./ProductsList";
+import AddProduct from "./AddProduct";
+import EditeProduct from "./EditeProduct";
+import ProductDetails from "./ProductDetails";
 
 export {
   Navbar,
@@ -18,4 +20,6 @@ export {
   SubbmitLoader,
   EditeCategory,
   CategoryDetails,
+  EditeProduct,
+  ProductDetails,
 };

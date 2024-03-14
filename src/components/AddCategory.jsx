@@ -68,7 +68,9 @@ const AddCategory = () => {
             onChange={handleInputChange}
           />
           {errors.name && (
-            <p className="text-sm mt-1 text-red-500">{errors.name}</p>
+            <p className="text-sm font-medium mt-1 text-red-500">
+              {errors.name}
+            </p>
           )}
         </div>
         <div>
@@ -81,7 +83,9 @@ const AddCategory = () => {
             onChange={handleInputChange}
           ></textarea>
           {errors.description && (
-            <p className="text-sm mt-1 text-red-500">{errors.description}</p>
+            <p className="text-sm font-medium mt-1 text-red-500">
+              {errors.description}
+            </p>
           )}
         </div>
         <div className="flex flex-col items-center gap-y-2">
