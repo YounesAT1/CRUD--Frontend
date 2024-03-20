@@ -74,7 +74,7 @@ const EditProduct = () => {
         if (err.response.status === 422) {
           setErrors(err.response.data.errors);
         } else if (err.response.status === 404) {
-          setFetchErr("Category not found");
+          setFetchErr("Product not found");
         } else {
           toast.error("Unexpected error");
         }

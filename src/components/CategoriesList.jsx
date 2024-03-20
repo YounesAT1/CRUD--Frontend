@@ -61,7 +61,7 @@ function CategoriesList() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-7xl mx-auto p-4">
       <div className="flex items-center justify-between mb-3">
         <h1 className="text-2xl font-medium text-slate-600 ">Categories</h1>
         <Link
@@ -97,9 +97,9 @@ function CategoriesList() {
             {categories.map((category) => (
               <tr key={category.id}>
                 <td className=" p-2">{category.id}</td>
-                <td className=" p-2">{category.name}</td>
+                <td className=" p-2 w-[200px]">{category.name}</td>
                 <td className=" p-2">{category.description}</td>
-                <td className="flex items-center justify-center my-1 gap-x-1 ">
+                <td className="flex items-center justify-center my-1 gap-x-1 mx-1">
                   <Link
                     to={`/categories/${category.id}/edit`}
                     className="bg-blue-500 text-white  p-2 rounded"

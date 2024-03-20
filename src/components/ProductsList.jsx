@@ -42,12 +42,8 @@ const ProductsList = () => {
       }
     } catch (error) {
       if (error.response) {
-        switch (error.response.status) {
-          case 404:
-            toast.error("Product not found");
-            break;
-          default:
-            toast.error("Error deleting Product");
+        if (error.response.status === 404) {
+          toast.error("Product not found");
         }
       } else {
         toast.error("Error deleting Product");
@@ -58,7 +54,7 @@ const ProductsList = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-7xl mx-auto p-4">
       <div className="flex items-center justify-between mb-3">
         <h1 className="text-2xl font-medium text-slate-600 ">Products</h1>
         <Link

@@ -36,7 +36,7 @@ function CategoryDetails() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-7xl mx-auto p-4">
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -58,7 +58,7 @@ function CategoryDetails() {
             <tr>
               <td className="p-2">{category.id}</td>
               <td className="p-2">{category.name}</td>
-              <td className="p-2">{category.description}</td>
+              <td className="p-2 w-[800px]">{category.description}</td>
               <td className="p-2">{formatDate(category.created_at)}</td>
               <td className="p-2">{formatDate(category.updated_at)}</td>
             </tr>

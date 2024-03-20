@@ -9,7 +9,7 @@ const AddProduct = () => {
     name: "",
     price: "",
     availableQuantity: "",
-    category: "",
+    category_id: "",
   };
 
   const [productData, setProductData] = useState(initialProductData);
@@ -128,7 +128,7 @@ const AddProduct = () => {
             value={productData.category}
             onChange={handleInputChange}
           >
-            <option value="" disabled>
+            <option value="" disabled selected>
               Select a category
             </option>
             {categories.map((category) => (
