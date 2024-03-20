@@ -22,6 +22,7 @@ const EditProduct = () => {
           `http://127.0.0.1:8000/api/products/${id}`
         );
         setProductData(response.data.product);
+        console.log(response.data.product);
       } catch (error) {
         setFetchErr("Error fetching Product");
       } finally {
@@ -147,10 +148,10 @@ const EditProduct = () => {
             <select
               name="category_id"
               className="mt-1 py-2 px-3 border rounded-md w-full bg-gray-200 text-slate-800 text-l placeholder:text-gray-500 outline-none"
-              value={productData.category}
+              value={productData.category_id}
               onChange={handleInputChange}
             >
-              <option value="" disabled>
+              <option value="" disabled selected>
                 Select a category
               </option>
               {categories.map((category) => (
