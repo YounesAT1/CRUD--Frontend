@@ -18,7 +18,7 @@ const ProductsList = () => {
 
         setproducts(response.data);
       } catch (error) {
-        setError("Error fetching categories");
+        setError("Error fetching Products");
       } finally {
         setIsLoading(false);
       }
